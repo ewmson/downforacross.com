@@ -10,7 +10,10 @@ IF NOT EXISTS puzzles
   uploaded_at timestamp without time zone,
 
   -- static properties of the puzzle
-  content json
+  content jsonb,
+
+  -- constraints to prevent duplicate puzzles
+  UNIQUE(content, is_public)
 );
 
 ALTER TABLE public.puzzles
